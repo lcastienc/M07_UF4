@@ -1,0 +1,37 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<div class="infoStudents">
+    <h1>INFORMACIÓ ESTUDIANTS ITIC BARCELONA</h1>
+    <table>
+    <thead>
+        <tr>
+            <td>ID</td>
+            <td>NOM</td>
+            <td>COGNOM</td>
+            <td>EMAIL</td>
+            <td>CURS</td>
+            <td>MODULS MATRICULATS</td>
+        </tr>
+    </thead>
+    <tbody>
+    {% for k,v in studs.items  %}
+        <tr>
+                <td>{{ v.id }}</td>
+                <td>{{ v.nom }}</td>
+                <td>{{ v.cognom1 }} {{ v.cognom2 }}</td>
+                <td>{{ v.email }}</td>
+                <td>{{ v.curs }}</td>
+                <td>{{ v.modulsMatriculats }}</td>
+                <td><a href="{% url 'student' v.id %}">Mes Informació</a></td>
+                <td><a>Editar</a></td>
+                <td><a>Esborrar</a></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+    {% comment %} <a href="{% url 'add_student' %}">Afegir nou alumne</a> {% endcomment %}
+</div>
+
+{% endblock %}

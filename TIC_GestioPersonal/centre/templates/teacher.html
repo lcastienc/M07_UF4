@@ -1,0 +1,35 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+    <div class="infoTeacher">
+        <h1>INFORMACIÓ DE PROFESOR ITIC BARCELONA</h1>
+        <table>
+            <thead>
+            <tr>
+                <td>ID</td>
+                <td>NOM</td>
+                <td>COGNOM</td>
+                <td>EMAIL</td>
+                <td>CURSOS</td>
+                <td>TUTOR</td>
+                <td>MODULS IMPARTITS</td>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ teacher.id }}</td>
+                    <td>{{ teacher.nom }}</td>
+                    <td>{{ teacher.cognom1 }} {{ teacher.cognom2 }}</td>
+                    <td>{{ teacher.email }}</td>
+                    <td>{{ teacher.curs }}</td>
+                    <td>{{ teacher.tutor }}</td>
+                    <td>{{ teacher.modulsImpartits }}</td>
+                </tr>
+
+            </tbody>
+        </table>
+    <a href="{% url 'teachers' %}">Tornar a llista profesorat</a>
+    </div>
+
+{% endblock %}
