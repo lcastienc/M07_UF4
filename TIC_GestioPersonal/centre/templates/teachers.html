@@ -1,0 +1,40 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<div class="infoTeachers">
+    <h1>INFORMACIÓ PROFESORAT ITIC BARCELONA</h1>
+    <table>
+        <thead>
+        <tr>
+            <td>ID</td>
+            <td>NOM</td>
+            <td>COGNOM</td>
+            <td>EMAIL</td>
+            <td>CURSOS</td>
+            <td>TUTOR</td>
+            <td>MODULS IMPARTITS</td>
+        </tr>
+        </thead>
+        <tbody>
+        {% for k,v in teachs.items  %}
+        	<tr>
+                <td>{{ v.id }}</td>
+                <td>{{ v.nom }}</td>
+                <td>{{ v.cognom1 }} {{ v.cognom2 }}</td>
+                <td>{{ v.email }}</td>
+                <td>{{ v.curs }}</td>
+                <td>{{ v.tutor }}</td>
+                <td>{{ v.modulsImpartits }}</td>
+                <td><a href="{% url 'teacher' v.id %}">Mes Informació</a></td>
+            <td>Editar</td>
+            <td>Esborrar</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a>Afegir nou Professor</a>
+
+</div>
+
+{% endblock %}

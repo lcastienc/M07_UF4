@@ -10,7 +10,7 @@
 </head>
 <body>
 {%  include "head/header.html" %}
-<!--
+
 <h1 class="text-3xl font-bold underline">Primer projecte - app prova</h1>
 <p>Benvinguts a la primera app prova</p>
 <div>
@@ -24,8 +24,10 @@
         <label>Edat: </label> {{edat}}
     </div>
 </div>
--->
 
+<a href="{% url 'students' %}">Informació Estudiants</a>
+<br>
+<a href="{% url 'teachers' %}">Informació Professors</a>
 {% block content %}
 
 {% endblock %}

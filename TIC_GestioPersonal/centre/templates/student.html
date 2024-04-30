@@ -1,0 +1,33 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+    <div class="infoStudent">
+        <h1>INFORMACIÓ DE ESTUDIANT ITIC BARCELONA</h1>
+        <table>
+            <thead>
+            <tr>
+                <td>ID</td>
+                <td>NOM</td>
+                <td>COGNOM</td>
+                <td>EMAIL</td>
+                <td>CURS</td>
+                <td>MODULS MATRICULATS</td>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ student.id }}</td>
+                    <td>{{ student.nom }}</td>
+                    <td>{{ student.cognom1 }} {{ student.cognom2 }}</td>
+                    <td>{{ student.email }}</td>
+                    <td>{{ student.curs }}</td>
+                    <td>{{ student.modulsMatriculats }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <a href="{% url 'students' %}">Tornar a llista estudiants</a>
+
+    </div>
+
+{% endblock %}
