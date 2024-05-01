@@ -23,6 +23,7 @@ def index(request):
 
 
 #Practica 1 a, teachers y students
+'''
 def teachers(request):
     teachers = {
         'teacher1': {
@@ -58,6 +59,7 @@ def teachers(request):
     }
     context = {'teachs': teachers}
     return render(request, 'teachers.html', context)
+'''
 
 '''
 def students(request):
@@ -179,6 +181,40 @@ def student(request, pk):
 
 
 #Practica 2 CRUD Professors i Estudiants
+def teachers(request):
+    professors = Professor.objects.all()
+    context = {'professors': professors}
+    return render(request, 'teachers.html', context)
+
+def add_teacher(request):
+    form = ProfessorForm
+    if request.method == 'POST':
+        form = ProfessorForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('teachers')
+    else:
+        form = ProfessorForm()
+        context = {'form': form}
+        return render(request, 'add_teacher.html', context)
+
+def edit_teacher(request, pk):
+    professor = Professor.objects.get(id=pk)
+    form = ProfessorForm(instance=professor)
+    if request.method == 'POST':
+        form = ProfessorForm(request.POST, instance=professor)
+        if form.is_valid():
+            form.save()
+            return redirect('teachers')
+    else:
+        context = {'form': form}
+        return render(request, 'edit_teacher.html', context)
+def delete_teacher(request, pk):
+    professor = Professor.objects.get(id=pk)
+    if request.method == 'POST':
+        professor.delete()
+        return redirect('teachers')
+    return render(request, 'delete_teacher.html', {'professor': professor})
 
 def student(request, pk):
     student = Estudiant.objects.get(id=pk)
@@ -201,7 +237,6 @@ def add_student(request):
         form = EstudiantForm()
         context = {'form': form}
         return render(request, 'add_student.html', context)
-
 
 def edit_student(request, pk):
     estudiant = Estudiant.objects.get(id=pk)

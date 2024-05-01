@@ -3,33 +3,36 @@
 {% block content %}
 
     <div class="infoTeacher">
-        <h1>INFORMACIÓ DE PROFESOR ITIC BARCELONA</h1>
-        <table>
+        <h1 class="text-3xl font-bold mb-6">INFORMACIÓ DE PROFESSOR ITIC BARCELONA</h1>
+        <table class="w-full border border-gray-300">
             <thead>
-            <tr>
-                <td>ID</td>
-                <td>NOM</td>
-                <td>COGNOM</td>
-                <td>EMAIL</td>
-                <td>CURSOS</td>
-                <td>TUTOR</td>
-                <td>MODULS IMPARTITS</td>
-            </tr>
+                <tr class="bg-gray-200">
+                    <td class="p-2 border border-gray-300">ID</td>
+                    <td class="p-2 border border-gray-300">NOM</td>
+                    <td class="p-2 border border-gray-300">COGNOM</td>
+                    <td class="p-2 border border-gray-300">EMAIL</td>
+                    <td class="p-2 border border-gray-300">CURSOS</td>
+                    <td class="p-2 border border-gray-300">TUTOR</td>
+                    <td class="p-2 border border-gray-300">MODULS IMPARTITS</td>
+                    <td class="p-2 border border-gray-300">Editar</td>
+                    <td class="p-2 border border-gray-300">Esborrar</td>
+                </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>{{ teacher.id }}</td>
-                    <td>{{ teacher.nom }}</td>
-                    <td>{{ teacher.cognom1 }} {{ teacher.cognom2 }}</td>
-                    <td>{{ teacher.email }}</td>
-                    <td>{{ teacher.curs }}</td>
-                    <td>{{ teacher.tutor }}</td>
-                    <td>{{ teacher.modulsImpartits }}</td>
+                    <td class="p-2 border border-gray-300">{{ teacher.id }}</td>
+                    <td class="p-2 border border-gray-300">{{ teacher.nom }}</td>
+                    <td class="p-2 border border-gray-300">{{ teacher.cognom1 }} {{ teacher.cognom2 }}</td>
+                    <td class="p-2 border border-gray-300">{{ teacher.email }}</td>
+                    <td class="p-2 border border-gray-300">{{ teacher.curs }}</td>
+                    <td class="p-2 border border-gray-300">{{ teacher.tutor }}</td>
+                    <td class="p-2 border border-gray-300">{{ teacher.modulsImpartits }}</td>
+                    <td class="p-2 border border-gray-300"><button class="bg-gray-200 px-4 py-2 rounded-md"><a>Editar</a></button></td>
+                    <td class="p-2 border border-gray-300"><a class="text-red-500">Esborrar</a></td>
                 </tr>
-
             </tbody>
         </table>
-    <a href="{% url 'teachers' %}">Tornar a llista profesorat</a>
+        <a href="{% url 'teachers' %}" class="block mt-4 text-blue-500">TORNAR LLISTA PROFESSORS</a>
     </div>
 
 {% endblock %}

@@ -1,4 +1,17 @@
 
-<header>
-    <h1 style="background-color: #4ac1f7">Header</h1>
+<header class="bg-blue-500 p-4">
+    <nav class="flex justify-center ">
+        <p></p>
+        <ul class="flex space-x-4">
+            <li class="text-white">
+                <a href="{% url 'index' %}" class="hover:bg-gray-200 hover:bg-opacity-50 hover:shadow-md px-4 py-2 rounded-md transition duration-300 ease-in-out">Home</a>
+            </li>
+            <li class="text-white">
+                <a href="{% url 'students' %}" class="hover:bg-gray-200 hover:bg-opacity-50 hover:shadow-md px-4 py-2 rounded-md transition duration-300 ease-in-out">Estudiantes</a>
+            </li>
+            <li class="text-white">
+                <a href="{% url 'teachers' %}" class="hover:bg-gray-200 hover:bg-opacity-50 hover:shadow-md px-4 py-2 rounded-md transition duration-300 ease-in-out">Profesores</a>
+            </li>
+        </ul>
+    </nav>
 </header>
