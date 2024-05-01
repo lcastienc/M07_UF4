@@ -1,0 +1,12 @@
+{% extends 'index.html' %}
+{% block content %}
+
+    <h1>ESBORRAR DADES ESTUDIANT</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        <button><input type="submit" value="ESBORRAR"></button>
+    </form>
+    <button><a href="{% url 'students' %}">Regresar lista estudiantes</a></button>
+
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'index.html' %}
+{% block content %}
+    <h1>AFEGIR NOU ESTUDIANT</h1>
+    <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="AFEGIR">
+    </form>
+    <button><a href="{% url 'students' %}">Tornar a la llista d'estudiants</a></button>
+{% endblock %}
