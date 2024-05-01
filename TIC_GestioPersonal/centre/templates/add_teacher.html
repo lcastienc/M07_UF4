@@ -1,0 +1,10 @@
+{% extends 'index.html' %}
+{% block content %}
+    <h1>AFEGIR NOU PROFESSOR</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="AFEGIR">
+    </form>
+    <button><a href="{% url 'students' %}">TORNAR LLISTA PROFESSORS</a></button>
+{% endblock %}

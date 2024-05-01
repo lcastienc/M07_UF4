@@ -3,38 +3,50 @@
 {% block content %}
 
 <div class="infoTeachers">
-    <h1>INFORMACIÓ PROFESORAT ITIC BARCELONA</h1>
-    <table>
+    <h1 class="text-3xl font-bold mb-6">INFORMACIÓ PROFESSORS ITIC BARCELONA</h1>
+    <table class="w-full border border-gray-300">
         <thead>
-        <tr>
-            <td>ID</td>
-            <td>NOM</td>
-            <td>COGNOM</td>
-            <td>EMAIL</td>
-            <td>CURSOS</td>
-            <td>TUTOR</td>
-            <td>MODULS IMPARTITS</td>
-        </tr>
+            <tr class="bg-gray-200">
+                <td class="p-2 border border-gray-300">ID</td>
+                <td class="p-2 border border-gray-300">NOM</td>
+                <td class="p-2 border border-gray-300">COGNOM</td>
+                <td class="p-2 border border-gray-300">EMAIL</td>
+                <td class="p-2 border border-gray-300">CURSOS</td>
+                <td class="p-2 border border-gray-300">ROL</td>
+                <td class="p-2 border border-gray-300">MODULS IMPARTITS</td>
+                <td class="p-2 border border-gray-300">Mes Informació</td>
+                <td class="p-2 border border-gray-300">Editar</td>
+                <td class="p-2 border border-gray-300">Esborrar</td>
+            </tr>
         </thead>
         <tbody>
-        {% for k,v in teachs.items  %}
-        	<tr>
-                <td>{{ v.id }}</td>
-                <td>{{ v.nom }}</td>
-                <td>{{ v.cognom1 }} {{ v.cognom2 }}</td>
-                <td>{{ v.email }}</td>
-                <td>{{ v.curs }}</td>
-                <td>{{ v.tutor }}</td>
-                <td>{{ v.modulsImpartits }}</td>
-                <td><a href="{% url 'teacher' v.id %}">Mes Informació</a></td>
-            <td>Editar</td>
-            <td>Esborrar</td>
+            {% for teacher in  professors %}
+            <tr>
+                <td class="p-2 border border-gray-300">{{ teacher.id }}</td>
+                <td class="p-2 border border-gray-300">{{ teacher.nom }}</td>
+                <td class="p-2 border border-gray-300">{{ teacher.cognom1 }} {{ teacher.cognom2 }}</td>
+                <td class="p-2 border border-gray-300">{{ teacher.email }}</td>
+                <td class="p-2 border border-gray-300">
+                    {% for curs in teacher.cursosImpartits.all %}
+                        {{ curs.Codi }}
+                        {% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+                </td>
+                <td class="p-2 border border-gray-300">{{ teacher.rolProfessor }}</td>
+                <td class="p-2 border border-gray-300">
+                    {% for modul in teacher.modulsImpartits.all %}
+                        {{ modul.Codi }}
+                        {% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+                </td>
+                <td class="p-2 border border-gray-300"><a href="{% url 'teacher' teacher.id %}" class="text-blue-500">Mes Informació</a></td>
+                <td class="p-2 border border-gray-300"><button class="bg-gray-200 px-4 py-2 rounded-md"><a href="{% url 'edit_teacher' teacher.id %}">Editar</a></button></td>
+                <td class="p-2 border border-gray-300"><a class="text-red-500" href="{% url 'delete_teacher' teacher.id %}">Esborrar</a></td>
             </tr>
-        {% endfor %}
+            {% endfor %}
         </tbody>
     </table>
-    <a>Afegir nou Professor</a>
-
+    <a href="{% url 'add_teacher' %}" class="block mt-4 text-blue-500">Afegir nou Professor</a>
 </div>
 
 {% endblock %}

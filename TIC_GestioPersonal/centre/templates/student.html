@@ -3,31 +3,44 @@
 {% block content %}
 
     <div class="infoStudent">
-        <h1>INFORMACIÓ DE ESTUDIANT ITIC BARCELONA</h1>
-        <table>
+        <h1 class="text-3xl font-bold mb-6">INFORMACIÓ DE ESTUDIANT ITIC BARCELONA</h1>
+        <table class="w-full border border-gray-300">
             <thead>
-            <tr>
-                <td>ID</td>
-                <td>NOM</td>
-                <td>COGNOM</td>
-                <td>EMAIL</td>
-                <td>CURS</td>
-                <td>MODULS MATRICULATS</td>
-            </tr>
+                <tr class="bg-gray-200">
+                    <td class="p-2 border border-gray-300">ID</td>
+                    <td class="p-2 border border-gray-300">NOM</td>
+                    <td class="p-2 border border-gray-300">COGNOM</td>
+                    <td class="p-2 border border-gray-300">EMAIL</td>
+                    <td class="p-2 border border-gray-300">CURS</td>
+                    <td class="p-2 border border-gray-300">MODULS MATRICULATS</td>
+                    <td class="p-2 border border-gray-300">Editar</td>
+                    <td class="p-2 border border-gray-300">Esborrar</td>
+                </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>{{ student.id }}</td>
-                    <td>{{ student.nom }}</td>
-                    <td>{{ student.cognom1 }} {{ student.cognom2 }}</td>
-                    <td>{{ student.email }}</td>
-                    <td>{{ student.curs }}</td>
-                    <td>{{ student.modulsMatriculats }}</td>
+                    <td class="p-2 border border-gray-300">{{ student.id }}</td>
+                    <td class="p-2 border border-gray-300">{{ student.nom }}</td>
+                    <td class="p-2 border border-gray-300">{{ student.cognom1 }} {{ student.cognom2 }}</td>
+                    <td class="p-2 border border-gray-300">{{ student.email }}</td>
+                    <td class="p-2 border border-gray-300">
+                        {% for curs in student.cursosMatriculats.all %}
+                            {{ curs.Codi }}
+                            {% if not forloop.last %}, {% endif %}
+                        {% endfor %}
+                    </td>
+                    <td class="p-2 border border-gray-300">
+                        {% for modul in student.modulsMatriculats.all %}
+                            {{ modul.Codi }}
+                            {% if not forloop.last %}, {% endif %}
+                        {% endfor %}
+                    </td>
+                    <td class="p-2 border border-gray-300"><button class="bg-gray-200 px-4 py-2 rounded-md"><a href="{% url 'edit_student' student.id %}">Editar</a></button></td>
+                    <td class="p-2 border border-gray-300"><a class="text-red-500" href="{% url 'delete_student' student.id %}">Esborrar</a></td>
                 </tr>
             </tbody>
         </table>
-        <a href="{% url 'students' %}">Tornar a llista estudiants</a>
-
+        <a href="{% url 'students' %}" class="block mt-4 text-blue-500">Tornar a llista estudiants</a>
     </div>
 
 {% endblock %}

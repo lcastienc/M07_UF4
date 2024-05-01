@@ -13,6 +13,8 @@
 
 <h1 class="text-3xl font-bold underline">Primer projecte - app prova</h1>
 <p>Benvinguts a la primera app prova</p>
+
+<!--
 <div>
     <div>
         <label>Nom: </label> {{nombre}}
@@ -24,10 +26,10 @@
         <label>Edat: </label> {{edat}}
     </div>
 </div>
-
-<a href="{% url 'students' %}">Informació Estudiants</a>
+-->
+<a href="{% url 'students' %}" class="block mt-4 text-blue-500">Informació Estudiants</a>
 <br>
-<a href="{% url 'teachers' %}">Informació Professors</a>
+<a href="{% url 'teachers' %}" class="block mt-4 text-blue-500">Informació Professors</a>
 {% block content %}
 
 {% endblock %}
