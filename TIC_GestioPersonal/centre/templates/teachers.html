@@ -11,9 +11,9 @@
                 <td class="p-2 border border-gray-300">NOM</td>
                 <td class="p-2 border border-gray-300">COGNOM</td>
                 <td class="p-2 border border-gray-300">EMAIL</td>
-                <td class="p-2 border border-gray-300">CURSOS</td>
-                <td class="p-2 border border-gray-300">ROL</td>
+                <td class="p-2 border border-gray-300">CURSOS IMPARTITS</td>
                 <td class="p-2 border border-gray-300">MODULS IMPARTITS</td>
+                <td class="p-2 border border-gray-300">ROL</td>
                 <td class="p-2 border border-gray-300">Mes Informació</td>
                 <td class="p-2 border border-gray-300">Editar</td>
                 <td class="p-2 border border-gray-300">Esborrar</td>
@@ -32,14 +32,14 @@
                         {% if not forloop.last %}, {% endif %}
                     {% endfor %}
                 </td>
-                <td class="p-2 border border-gray-300">{{ teacher.rolProfessor }}</td>
                 <td class="p-2 border border-gray-300">
                     {% for modul in teacher.modulsImpartits.all %}
                         {{ modul.Codi }}
                         {% if not forloop.last %}, {% endif %}
                     {% endfor %}
                 </td>
-                <td class="p-2 border border-gray-300"><a href="{% url 'teacher' teacher.id %}" class="text-blue-500">Mes Informació</a></td>
+                <td class="p-2 border border-gray-300">{{ teacher.rolProfessor }}</td>
+                <td class="p-2 border border-gray-300"><a href="{% url 'teacher' teacher.id %}" class="bg-blue-100 px-4 py-2 rounded-md">+Informació</a></td>
                 <td class="p-2 border border-gray-300"><button class="bg-gray-200 px-4 py-2 rounded-md"><a href="{% url 'edit_teacher' teacher.id %}">Editar</a></button></td>
                 <td class="p-2 border border-gray-300"><a class="text-red-500" href="{% url 'delete_teacher' teacher.id %}">Esborrar</a></td>
             </tr>
