@@ -6,17 +6,18 @@
         <h1 class="text-3xl font-bold mb-6">INFORMACIÓ DE PROFESSOR ITIC BARCELONA</h1>
         <table class="w-full border border-gray-300">
             <thead>
-            <tr class="bg-gray-200">
-                <td class="p-2 border border-gray-300">ID</td>
-                <td class="p-2 border border-gray-300">NOM</td>
-                <td class="p-2 border border-gray-300">COGNOM</td>
-                <td class="p-2 border border-gray-300">EMAIL</td>
-                <td class="p-2 border border-gray-300">CURSOS IMPARTITS</td>
-                <td class="p-2 border border-gray-300">MODULS IMPARTITS</td>
-                <td class="p-2 border border-gray-300">ROL</td>
-                <td class="p-2 border border-gray-300">Editar</td>
-                <td class="p-2 border border-gray-300">Esborrar</td>
-            </tr>
+
+                <tr class="bg-gray-200">
+                    <td class="p-2 border border-gray-300">ID</td>
+                    <td class="p-2 border border-gray-300">NOM</td>
+                    <td class="p-2 border border-gray-300">COGNOM</td>
+                    <td class="p-2 border border-gray-300">EMAIL</td>
+                    <td class="p-2 border border-gray-300">CURSOS IMPARTITS</td>
+                    <td class="p-2 border border-gray-300">MODULS IMPARTITS</td>
+                    <td class="p-2 border border-gray-300">ROL</td>
+                    <td class="p-2 border border-gray-300">Editar</td>
+                    <td class="p-2 border border-gray-300">Esborrar</td>
+                </tr>
             </thead>
             <tbody>
                 <tr>
@@ -26,8 +27,8 @@
                     <td class="p-2 border border-gray-300">{{ teacher.email }}</td>
                     <td class="p-2 border border-gray-300">
                         {% for curs in teacher.cursosImpartits.all %}
-                            {{ curs.Codi }}
-                            {% if not forloop.last %}, {% endif %}
+                        {{ curs.Codi }}
+                        {% if not forloop.last %}, {% endif %}
                         {% endfor %}
                     </td>
                     <td class="p-2 border border-gray-300">
@@ -37,8 +38,8 @@
                         {% endfor %}
                     </td>
                     <td class="p-2 border border-gray-300">{{ teacher.rolProfessor }}</td>
-                    <td ><button class="bg-gray-200 px-4 py-2 rounded-md"><a href="{% url 'edit_teacher' teacher.id %}">Editar</a></button></td>
-                    <td><a class="text-red-500" href="{% url 'delete_teacher' teacher.id %}">Esborrar</a></td>
+                    <td class="p-2 border border-gray-300"><button class="bg-gray-200 px-4 py-2 rounded-md"><a href="{% url 'edit_teacher' teacher.id %}">Editar</a></button></td>
+                    <td class="p-2 border border-gray-300"><a class="text-red-500" href="{% url 'delete_teacher' teacher.id %}">Esborrar</a></td>
                 </tr>
             </tbody>
         </table>

@@ -5,8 +5,8 @@
 
     <form method="post">
         {% csrf_token %}
-        <button><input type="submit" value="ESBORRAR"></button>
+        <button><input class="block mt-4 text-red-500" type="submit" value="ESBORRAR"></button>
     </form>
-    <button><a href="{% url 'teachers' %}">TORNAR LLISTA PROFESSORS</a></button>
+    <button><a class="block mt-4 text-blue-500" href="{% url 'teachers' %}">TORNAR LLISTA PROFESSORS</a></button>
 
 {% endblock %}
