@@ -16,6 +16,8 @@ def about(request):
 #Third route, with path 'index/'
 def index(request):
     #return HttpResponse("Hello, world")
+    #El retorn de dades de profesor en aquest apartat no es viables perque s'ha modificat
+    #tot per tal de fer el crud
     professor = {"nom": "John", "cognom": "Doe", "edat": 25}
     template = loader.get_template('index.html')
     dades = template.render({'nombre':professor['nom'], 'cognom':professor['cognom'], 'edat':professor['edat']})
@@ -95,7 +97,6 @@ def students(request):
     context = {'studs': students}
     return render(request, 'students.html', context)
 '''
-
 
 #Practica 1b, teachers y students con links individuales
 
