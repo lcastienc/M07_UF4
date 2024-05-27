@@ -13,6 +13,7 @@
                     <td class="p-2 border border-gray-300">EMAIL</td>
                     <td class="p-2 border border-gray-300">CURS</td>
                     <td class="p-2 border border-gray-300">MODULS MATRICULATS</td>
+                    <td class="p-2 border border-gray-300">ROL</td>
                     <td class="p-2 border border-gray-300">Editar</td>
                     <td class="p-2 border border-gray-300">Esborrar</td>
                 </tr>
@@ -35,6 +36,7 @@
                             {% if not forloop.last %}, {% endif %}
                         {% endfor %}
                     </td>
+                    <td class="p-2 border border-gray-300">{{ student.rolEstudiant }}</td>
                     <td class="p-2 border border-gray-300"><button class="bg-gray-200 px-4 py-2 rounded-md"><a href="{% url 'edit_student' student.id %}">Editar</a></button></td>
                     <td class="p-2 border border-gray-300"><a class="text-red-500" href="{% url 'delete_student' student.id %}">Esborrar</a></td>
                 </tr>

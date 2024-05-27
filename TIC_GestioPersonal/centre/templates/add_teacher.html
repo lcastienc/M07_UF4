@@ -4,7 +4,7 @@
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" value="AFEGIR">
+        <input class="block mt-4 text-blue-500" type="submit" value="AFEGIR">
     </form>
-    <button><a href="{% url 'students' %}">TORNAR LLISTA PROFESSORS</a></button>
+    <button><a class="block mt-4 text-blue-500" href="{% url 'students' %}">TORNAR LLISTA PROFESSORS</a></button>
 {% endblock %}

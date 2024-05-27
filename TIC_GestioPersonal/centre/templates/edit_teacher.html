@@ -4,8 +4,8 @@
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" value="Guardar Canvis">
+        <input class="block mt-4 text-blue-500" type="submit" value="Guardar Canvis">
     </form>
 
-    <button><a href="{% url 'students' %}">TORNAR LLISTA PROFESSORS</a></button>
+    <button><a class="block mt-4 text-blue-500" href="{% url 'teachers' %}">TORNAR LLISTA PROFESSORS</a></button>
 {% endblock %}

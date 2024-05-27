@@ -99,47 +99,47 @@ def students(request):
 
 #Practica 1b, teachers y students con links individuales
 
-def teacher(request, pk):
-    teacher_obj = None
-    teachers = {
-        'teacher1': {
-            'id': '1',
-            'nom': 'Roger',
-            'cognom1': 'Sobrino',
-            'cognom2': 'Gil',
-            'email': 'roger.sobrino@iticbcn.cat',
-            'curs': ['DAW1B', 'DAM2B'],
-            'tutor': 'SI',
-            'modulsImpartits': ['M01', 'M02', 'M03']
-        },
-        'teacher2': {
-            'id': '2',
-            'nom': 'Juanma',
-            'cognom1': 'Sanchez',
-            'cognom2': 'Biel',
-            'email': 'juanmanuel.sanchez@iticbcn.cat',
-            'curs': ['DAW1B', 'SMIX2B'],
-            'tutor': 'NO',
-            'modulsImpartits': ['M02', 'M05', 'M09']
-        },
-        'teacher3': {
-            'id': '3',
-            'nom': 'Oriol',
-            'cognom1': 'Roca',
-            'cognom2': 'Fabra',
-            'email': 'joseporiol.roca@iticbcn.cat',
-            'curs': ['DAM1B', 'SMIX2A'],
-            'tutor': 'SI',
-            'modulsImpartits': ['M07', 'M10', 'M12']
-        }
-    }
-
-    for key, value in teachers.items():
-        if value['id'] == pk:
-            teacher_obj = value
-            break
-
-    return render(request, 'teacher.html', {'teacher': teacher_obj})
+# def teacher(request, pk):
+#     teacher_obj = None
+#     teachers = {
+#         'teacher1': {
+#             'id': '1',
+#             'nom': 'Roger',
+#             'cognom1': 'Sobrino',
+#             'cognom2': 'Gil',
+#             'email': 'roger.sobrino@iticbcn.cat',
+#             'curs': ['DAW1B', 'DAM2B'],
+#             'tutor': 'SI',
+#             'modulsImpartits': ['M01', 'M02', 'M03']
+#         },
+#         'teacher2': {
+#             'id': '2',
+#             'nom': 'Juanma',
+#             'cognom1': 'Sanchez',
+#             'cognom2': 'Biel',
+#             'email': 'juanmanuel.sanchez@iticbcn.cat',
+#             'curs': ['DAW1B', 'SMIX2B'],
+#             'tutor': 'NO',
+#             'modulsImpartits': ['M02', 'M05', 'M09']
+#         },
+#         'teacher3': {
+#             'id': '3',
+#             'nom': 'Oriol',
+#             'cognom1': 'Roca',
+#             'cognom2': 'Fabra',
+#             'email': 'joseporiol.roca@iticbcn.cat',
+#             'curs': ['DAM1B', 'SMIX2A'],
+#             'tutor': 'SI',
+#             'modulsImpartits': ['M07', 'M10', 'M12']
+#         }
+#     }
+#
+#     for key, value in teachers.items():
+#         if value['id'] == pk:
+#             teacher_obj = value
+#             break
+#
+#     return render(request, 'teacher.html', {'teacher': teacher_obj})
 
 '''
 def student(request, pk):
@@ -186,6 +186,11 @@ def teachers(request):
     context = {'professors': professors}
     return render(request, 'teachers.html', context)
 
+def teacher(request,pk):
+    teacher = Professor.objects.get(id=pk)
+    context = {'teacher': teacher}
+    return render(request, 'teacher.html', context)
+
 def add_teacher(request):
     form = ProfessorForm
     if request.method == 'POST':
@@ -209,6 +214,7 @@ def edit_teacher(request, pk):
     else:
         context = {'form': form}
         return render(request, 'edit_teacher.html', context)
+
 def delete_teacher(request, pk):
     professor = Professor.objects.get(id=pk)
     if request.method == 'POST':
